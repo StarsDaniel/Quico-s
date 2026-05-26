@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quico's Burgers</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#f5f3ef;
+      color:#2b2b2b;
+      line-height:1.6;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    .hero{
+      height:70vh;
+      background:
+      linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+      url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1400&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+      padding:20px;
+    }
+
+    .hero-content h1{
+      font-family:'Playfair Display',serif;
+      font-size:4rem;
+      letter-spacing:2px;
+      margin-bottom:15px;
+    }
+
+    .hero-content p{
+      font-size:1.1rem;
+      color:#e7e7e7;
+    }
+
+    .container{
+      width:90%;
+      max-width:1300px;
+      margin:auto;
+      padding:80px 0;
+    }
+
+    .section-title{
+      font-family:'Playfair Display',serif;
+      font-size:2.5rem;
+      margin-bottom:50px;
+      text-align:center;
+      color:#3d342f;
+      position:relative;
+    }
+
+    .section-title::after{
+      content:'';
+      width:80px;
+      height:2px;
+      background:#8d7b68;
+      position:absolute;
+      bottom:-12px;
+      left:50%;
+      transform:translateX(-50%);
+    }
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:35px;
+    }
+
+    .card{
+      background:white;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 8px 30px rgba(0,0,0,0.08);
+      transition:0.35s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    .card-image{
+      height:240px;
+      overflow:hidden;
+    }
+
+    .card-image img{
+      height:100%;
+      object-fit:cover;
+      transition:0.4s;
+    }
+
+    .card:hover .card-image img{
+      transform:scale(1.05);
+    }
+
+    .card-content{
+      padding:25px;
+    }
+
+    .card-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:15px;
+    }
+
+    .card-header h3{
+      font-size:1.5rem;
+      color:#2d2d2d;
+      font-weight:600;
+    }
+
+    .price{
+      background:#3d342f;
+      color:white;
+      padding:8px 14px;
+      border-radius:30px;
+      font-size:0.95rem;
+      font-weight:500;
+    }
+
+    .desc{
+      color:#666;
+      font-size:0.95rem;
+      margin-bottom:15px;
+    }
+
+    .combo{
+      color:#8d7b68;
+      font-weight:600;
+    }
+
+    .extras{
+      margin-top:80px;
+      background:white;
+      border-radius:25px;
+      padding:50px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .extras-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+      margin-top:35px;
+    }
+
+    .extra-item{
+      background:#f8f6f3;
+      padding:30px;
+      border-radius:18px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .extra-item:hover{
+      transform:translateY(-5px);
+    }
+
+    .extra-item h4{
+      color:#3d342f;
+      margin-bottom:10px;
+      font-size:1.1rem;
+    }
+
+    .extra-item p{
+      color:#8d7b68;
+      font-weight:600;
+      font-size:1.1rem;
+    }
+
+    footer{
+      background:#2a2522;
+      color:#ddd;
+      text-align:center;
+      padding:30px;
+      margin-top:80px;
+    }
+
+    @media(max-width:768px){
+
+      .hero{
+        height:60vh;
+      }
+
+      .hero-content h1{
+        font-size:2.7rem;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+      .card-image{
+        height:220px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Quico's Burgers</h1>
+      <p>Hamburguesas · Burritos · Boneless · Dogos</p>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- HAMBURGUESAS -->
+    <h2 class="section-title">Hamburguesas</h2>
+
+    <div class="menu-grid">
+
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Clásica</h3>
+            <span class="price">$100</span>
+          </div>
+          <p class="desc">
+            Carne de res, queso americano, lechuga,
+            jitomate, cebolla, pepinillos y rajas.
+          </p>
+		  <p class="combo">Sin combo: $65</p>
+          <p class="combo">Combo: $100</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Clásica Tocino</h3>
+            <span class="price">$110</span>
+          </div>
+          <p class="desc">
+            Carne de res, tocino, queso americano, lechuga,
+            jitomate, cebolla, pepinillos y rajas.
+          </p>
+		  <p class="combo">Sin combo: $75</p>
+          <p class="combo">Combo: $110</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Hawaiana</h3>
+            <span class="price">$115</span>
+          </div>
+          <p class="desc">
+            Carne de res, longaniza, chiles toreados,
+            queso Oaxaca y vegetales frescos.
+          </p>
+		  <p class="combo">Sin combo: $80</p>
+          <p class="combo">Combo: $115</p>
+        </div>
+      </div>
+	
+<!--Segunda Parte de las hamburguesas-->	
+	  
+	  <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Chula</h3>
+            <span class="price">$130</span>
+          </div>
+          <p class="desc">
+            Doble carne, tocino, guacamole,
+            queso americano, lechuga y jitomate.
+          </p>
+          <p class="combo">Combo: $130</p>
+        </div>
+      </div>
+	  
+	  <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Mexicana</h3>
+            <span class="price">$120</span>
+          </div>
+          <p class="desc">
+            Carne de res, longaniza, chiles toreados,
+            queso Oaxaca y vegetales frescos.
+          </p>
+		  <p class="combo">Sin combo: $90</p>
+          <p class="combo">Combo: $120</p>
+        </div>
+      </div>
+	  
+	   <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Pollo</h3>
+            <span class="price">$100</span>
+          </div>
+          <p class="desc">
+            Carne de pollo, jamón, aderezo de chipotle,
+            queso Americano, lechuga, jitomate cebolla, pepinos y rajas.
+          </p>
+		  <p class="combo">Sin combo: $60</p>
+          <p class="combo">Combo: $100</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BURRITOS -->
+    <h2 class="section-title" style="margin-top:90px;">
+      Burritos
+    </h2>
+
+    <div class="menu-grid">
+
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Cachetón</h3>
+            <span class="price">$85</span>
+          </div>
+          <p class="desc">
+            Envuelto en tocino, frijoles,
+            quesillo, bistec y longaniza.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-image">
+          <img src="https://imgs.search.brave.com/Xl1OH6x3J6qTI5x1gzEhkL6yL_9ufMzTTSCmrq7NuqY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zbmFw/Y2Fsb3JpZS13ZWJm/bG93LXdlYnNpdGUu/czMudXMtZWFzdC0y/LmFtYXpvbmF3cy5j/b20vbWVkaWEvZm9v/ZF9waWNzX3YyL21l/ZGl1bS9iZWVmX2Fu/ZF9jaGVlc2VfYW5k/X2JlYW5fYnVycml0/by5qcGc" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Campechano</h3>
+            <span class="price">$70</span>
+          </div>
+          <p class="desc">
+            Frijoles, quesillo, bistec y longaniza.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DOGOS -->
+    <h2 class="section-title" style="margin-top:90px;">
+      Super Dogos
+    </h2>
+
+    <div class="menu-grid">
+
+      <div class="card">
+        <div class="card-image">
+          <img src="https://imgs.search.brave.com/at7vfRx5HrX27sgLe34AbYuzCxMKVU5STFgYCy0jH-o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTI2/MTEwMDE3L3Bob3Rv/L2hvdC1kb2ctd2l0/aC1rZXRjaHVwLW11/c3RhcmQtYW5kLWxl/dHR1Y2UuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPVFtSm50/VERvYnVMNnZoMVph/bk0yMlRXS3g3OFo2/WmdFakZIVDBFN1ZC/V0E9" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Canibal</h3>
+            <span class="price">$60</span>
+          </div>
+          <p class="desc">
+            Salchicha, tocino,
+            cebolla caramelizada y BBQ.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-image">
+          <img src="https://imgs.search.brave.com/lRvkiRJoE_6IJ6XGP_j3Zn2uEgZWni0bU23OdEkWIB0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5mb2JhZS5jb20v/cmVzaXplci92Mi9P/T05TTkxVQ1ZORzU3/SDVPMlZIV1lGNTJR/SS5wbmc_YXV0aD02/MmU2MjIyOTRhYmZk/Mjk0YTljZGVhOTQ5/ODA4OTkzMDQ5Nzkx/OTljY2ZjYjc4ZWI0/YjE4M2VmZDM4Yzc3/MDI0JnNtYXJ0PXRy/dWUmd2lkdGg9MzUw/JmhlaWdodD0xOTEm/cXVhbGl0eT04NQ" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Coqueto</h3>
+            <span class="price">$70</span>
+          </div>
+          <p class="desc">
+            Salchicha rellena de queso Oaxaca
+            envuelta en tocino.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BONELESS -->
+    <h2 class="section-title" style="margin-top:90px;">
+      Boneless
+    </h2>
+
+    <div class="menu-grid">
+
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>BBQ</h3>
+            <span class="price">$120</span>
+          </div>
+          <p class="desc">
+            Orden de boneless bañados
+            en salsa BBQ.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1608039755401-742074f0548d?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Mango Habanero</h3>
+            <span class="price">$120</span>
+          </div>
+          <p class="desc">
+            Boneless con salsa mango habanero.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- EXTRAS -->
+    <div class="extras">
+
+      <h2 class="section-title">Extras</h2>
+
+      <div class="extras-grid">
+
+        <div class="extra-item">
+          <h4>Orden de Papas</h4>
+          <p>$40</p>
+        </div>
+
+        <div class="extra-item">
+          <h4>Salchipapas</h4>
+          <p>$60</p>
+        </div>
+
+        <div class="extra-item">
+          <h4>Refresco</h4>
+          <p>$25</p>
+        </div>
+
+        <div class="extra-item">
+          <h4>Ingrediente Extra</h4>
+          <p>$15</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2025 Quico's Burgers</p>
+  </footer>
+
+</body>
+</html>
